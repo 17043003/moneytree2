@@ -13,14 +13,18 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.signin-body {
-    background-color: green;
+.signin-content {
+    background-color: rgb(171, 233, 171);
+    // position: fixed;
+    height: 50%;
     width: 500px;
-    margin: 40% auto;
+    margin: 10% auto;
 }
 
 .signin-btn {
-    background-color: gray;
+    background-color: rgb(171, 233, 171);
+    border: solid 3px #88ecba;
+    border-radius: 10px;
     display: inline-block;
     cursor: pointer;
     opacity: 0.6;
