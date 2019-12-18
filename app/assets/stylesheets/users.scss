@@ -1,3 +1,32 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.signin-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.signin-body {
+    background-color: green;
+    width: 500px;
+    margin: 40% auto;
+}
+
+.signin-btn {
+    background-color: gray;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.signin-btn:hover {
+    opacity: 1.0;
+}
