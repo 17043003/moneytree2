@@ -15,6 +15,6 @@ $(function () {
     });
 
     $(document).on('click', '.signin-content', function (event) {
-        event.stopPropagation();
+        event.stopPropagation(); // フォーム部分をクリックしてもモーダルが消えないようにする
     });
 });
