@@ -1,5 +1,7 @@
 #signin-modal.signin-modal
   .signin-content
+    h1 ログイン画面
+
     = form_with model: @user, scope: :user do |f|
       = f.label :name
       = f.text_field :name
