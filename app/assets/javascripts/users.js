@@ -17,4 +17,17 @@ $(function () {
     $(document).on('click', '.signin-content', function (event) {
         event.stopPropagation(); // フォーム部分をクリックしてもモーダルが消えないようにする
     });
+
+
+    $(document).on('click', '.signup-btn', function () {
+        $('.signup-modal').show();
+    });
+
+    $(document).on('click', '.signup-modal', function () {
+        $('.signup-modal').hide();
+    });
+
+    $(document).on('click', '.signup-content', function (event) {
+        event.stopPropagation(); // フォーム部分をクリックしてもモーダルが消えないようにする
+    });
 });

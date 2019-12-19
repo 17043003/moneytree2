@@ -25,6 +25,7 @@
     background-color: rgb(171, 233, 171);
     border: solid 3px #88ecba;
     border-radius: 10px;
+    margin: 10px 10px;
     display: inline-block;
     cursor: pointer;
     opacity: 0.6;
@@ -32,5 +33,40 @@
 }
 
 .signin-btn:hover {
+    opacity: 1.0;
+}
+
+.signup-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.signup-content {
+    background-color: rgb(208, 238, 125);
+    // position: fixed;
+    height: 50%;
+    width: 500px;
+    margin: 10% auto;
+}
+
+.signup-btn {
+    background-color: rgb(208, 238, 125);
+    border: solid 3px #dde6b0;
+    border-radius: 10px;
+    margin: 10px 10px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
     opacity: 1.0;
 }
