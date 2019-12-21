@@ -1,2 +1,7 @@
 h1 Users#index
 p Find me in app/views/users/index.html.slim
+
+= link_to '新規ユーザ登録', new_user_path, class: 'btn btn-primary'
+
+- @users.each do |user|
+  = user.name
