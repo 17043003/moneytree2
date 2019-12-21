@@ -1,5 +1,11 @@
 #signup-modal.signup-modal
   .signup-content
+
+    - errors ||= false
+    - if errors
+      - errors.each do |error|
+        = error
+
     h1 ユーザーの新規登録
 
     = form_with model: @new_user, scope: :user do |f|

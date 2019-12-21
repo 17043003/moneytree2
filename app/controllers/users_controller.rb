@@ -13,7 +13,9 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: "ユーザーを登録しました"
     else
-      # render ""
+      flash.now[:notice] = "登録に失敗しました"
+      render partial: "users/signup", locals: {errors: @user.errors}
+      # render "index", {errors: @user.errors}
     end
   end
 
