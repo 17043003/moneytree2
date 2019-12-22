@@ -1,5 +1,8 @@
+- if flash.alert
+  p.alert = flash.alert
+
 .form_wrapper
-  = form_with model: @user, scope: :user, local: true do |f|
+  = form_with url: :session, id: "login_form", local: true do |f|
     .form_group
       .form_label
         = f.label :name
@@ -8,27 +11,15 @@
 
     .form_group
       .form_label
-        = f.label :email
-      .form_field
-        = f.text_field :email, size: "60px"
-
-    .form_group
-      .form_label
         = f.label :password
       .form_field
         = f.password_field :password, size: "60px"
-
+    
     .form_group
       .form_label
         = f.label :password_confirmation
       .form_field
         = f.password_field :password_confirmation, size: "60px"
 
-    .form_group
-      .form_label
-        = f.label :administrator
-      .form_field
-        = f.check_box :administrator
-    
     .form_group
       = f.submit
