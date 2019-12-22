@@ -2,10 +2,32 @@
 @import "./users";
 
 .header {
-    height: 50px;
+    height: 45px;
+    border-bottom: solid 1px gray;
 }
 
-li {
-    float: left;
+ul {
     overflow: hidden;
+    height: 100%;
+}
+
+.header li {
+    float: left;
+    list-style-type: none;
+    height: 100%;
+    margin: 0 20px;
+
+    a {
+        display: block;
+        padding: 10px 5px;
+        height: 100%;
+        text-align: center;
+        background-color: rgb(240, 211, 168);
+        border-radius: 10px;
+    }
+
+    a:hover {
+        background-color: rgb(233, 102, 70);
+        transition: 0.5s;
+    }
 }
