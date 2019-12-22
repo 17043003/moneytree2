@@ -4,19 +4,19 @@
       .form_label
         = f.label :name
       .form_field
-        = f.text_field :name, autofocus: true
+        = f.text_field :name, autofocus: true, size: "60px"
 
     .form_group
       .form_label
         = f.label :email
       .form_field
-        = f.text_field :email
+        = f.text_field :email, size: "60px"
 
     .form_group
       .form_label
         = f.label :administrator
       .form_field
         = f.check_box :administrator
-
+    
     .form_group
       = f.submit
