@@ -2,11 +2,14 @@ h1 Users#new
 p Find me in app/views/users/new.html.slim
 
 = form_with model: @user, scope: :user, local: true do |f|
-  = f.label :name
-  = f.text_field :name
+  .form_group
+    = f.label :name
+    = f.text_field :name, autofocus: true
 
-  = f.label :email
-  = f.text_field :email
+  .form_group
+    = f.label :email
+    = f.text_field :email
 
-  = f.label :administrator
-  = f.check_box :administrator
+  .form_group
+    = f.label :administrator
+    = f.check_box :administrator
