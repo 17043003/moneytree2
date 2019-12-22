@@ -11,17 +11,18 @@
       .form_field
         = f.text_field :email, size: "60px"
 
-    .form_group
-      .form_label
-        = f.label :password
-      .form_field
-        = f.password_field :password, size: "60px"
+    - if controller.action_name == "new"
+      .form_group
+        .form_label
+          = f.label :password
+        .form_field
+          = f.password_field :password, size: "60px"
 
-    .form_group
-      .form_label
-        = f.label :password_confirmation
-      .form_field
-        = f.password_field :password_confirmation, size: "60px"
+      .form_group
+        .form_label
+          = f.label :password_confirmation
+        .form_field
+          = f.password_field :password_confirmation, size: "60px"
 
     - if controller.kind_of?(UsersController)
         .form_group

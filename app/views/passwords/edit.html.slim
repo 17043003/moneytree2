@@ -1,2 +1,17 @@
-h1 Passwords#edit
-p Find me in app/views/passwords/edit.html.slim
+.toolbar
+  = link_to "マイアカウントに戻る", :account
+
+= form_with model: @user, as: "account", url: :password, scope: :password do |f|
+  .password_label
+    = f.label :current_password
+    = f.password_field :current_password
+
+  .password_label
+    = f.label :password
+    = f.password_field :password
+
+  .password_label
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+
+  = f.submit "変更"

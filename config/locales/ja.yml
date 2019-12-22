@@ -14,6 +14,9 @@ ja:
         name: 名前
         email: メールアドレス
         administrator: 管理者権限 
+        current_password: 現在のパスワード
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワード(確認)
   date:
     abbr_day_names:
     - 日
