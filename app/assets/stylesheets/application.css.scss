@@ -1,2 +1,11 @@
 @import "bootstrap";
-@import "./users"
+@import "./users";
+
+.header {
+    height: 50px;
+}
+
+li {
+    float: left;
+    overflow: hidden;
+}

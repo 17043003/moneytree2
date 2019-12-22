@@ -10,6 +10,18 @@ html
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand Moneytree
+    
+    .header
+      ul
+        li = link_to "トップ", :root
+        li = link_to "ユーザー一覧", :users
+        li = link_to "今月の収支", "#"
+        li = link_to "グラフ", "#"
+
     .container
       = flash[:notice]
       = yield
+
+    .sidebar
+
+    .footer
