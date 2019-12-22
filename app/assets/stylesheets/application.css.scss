@@ -7,17 +7,31 @@
     border-bottom: solid 1px gray;
 }
 
+.account_menu {
+    float: right;
+    margin-right: 20px;
+}
+
 .main {
     display: block;
     float: left;
     width: 660px;
 }
 
+.not_login_display {
+    width: 100%;
+    background-color: skyblue;
+
+    .login_form {
+        text-align: center;
+    }
+}
+
 .sidebar {
     float: right;
     width: 275px;
     background-color: skyblue;
-
+    font-size: 90%;
 }
 
 .wrapper {
