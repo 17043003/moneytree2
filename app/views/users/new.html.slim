@@ -1,15 +1,27 @@
 h1 Users#new
 p Find me in app/views/users/new.html.slim
 
-= form_with model: @user, scope: :user, local: true do |f|
-  .form_group
-    = f.label :name
-    = f.text_field :name, autofocus: true
+= link_to 'ユーザ一覧へ戻る', users_path
 
-  .form_group
-    = f.label :email
-    = f.text_field :email
+.form_wrapper
+  = form_with model: @user, scope: :user, local: true do |f|
+    .form_group
+      .form_label
+        = f.label :name
+      .form_field
+        = f.text_field :name, autofocus: true
 
-  .form_group
-    = f.label :administrator
-    = f.check_box :administrator
+    .form_group
+      .form_label
+        = f.label :email
+      .form_field
+        = f.text_field :email
+
+    .form_group
+      .form_label
+        = f.label :administrator
+      .form_field
+        = f.check_box :administrator
+
+    .form_group
+      = f.submit
