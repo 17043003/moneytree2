@@ -1,2 +1,10 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+h2 ユーザー詳細
+
+= link_to "ユーザー一覧に戻る", users_path
+
+.user_name
+  = "名前："
+  = @user.name
+.user_email
+  = "メールアドレス："
+  = @user.email

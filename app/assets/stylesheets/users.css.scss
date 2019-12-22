@@ -19,3 +19,25 @@
         text-align: right;
     }
 }
+
+table.list {
+    margin: 15px 0;
+}
+
+h2.table_title {
+    margin-top: 20px;
+}
+
+table.list th,
+table.list td {
+    padding: 4px;
+    border: solid 1px white;
+}
+
+table.list th {
+    background-color: rgb(145, 230, 18);
+}
+
+table.list td {
+    background-color: rgb(203, 231, 160);
+}
