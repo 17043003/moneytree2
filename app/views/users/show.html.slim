@@ -9,3 +9,5 @@ p = link_to "ユーザー情報の編集", edit_user_path
 .user_email
   = "メールアドレス："
   = @user.email
+
+= link_to 'ユーザ削除', @user, method: :delete, data: { confirm: "本当に削除しますか？" }
