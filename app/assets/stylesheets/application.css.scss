@@ -2,8 +2,37 @@
 @import "./users";
 
 .header {
+    width: 100%;
     height: 45px;
     border-bottom: solid 1px gray;
+}
+
+.main {
+    display: block;
+    float: left;
+    width: 660px;
+}
+
+.sidebar {
+    float: right;
+    width: 275px;
+    background-color: skyblue;
+
+}
+
+.wrapper {
+    width: 970px;
+    margin: 30px auto 40px;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.footer {
+    width: 100%;
 }
 
 ul {

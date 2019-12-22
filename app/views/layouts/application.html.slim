@@ -18,10 +18,12 @@ html
         li = link_to "今月の収支", "#"
         li = link_to "グラフ", "#"
 
-    .container
-      = flash[:notice]
-      = yield
+    .wrapper.clearfix
+      .main
+        = flash[:notice]
+        = yield
 
-    .sidebar
+      .sidebar
+        == render "shared/sidebar"
 
     .footer

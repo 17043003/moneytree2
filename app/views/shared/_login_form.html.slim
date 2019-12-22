@@ -1,25 +1,15 @@
 - if flash.alert
   p.alert = flash.alert
 
-.form_wrapper
+.login_form
   = form_with url: :session, id: "login_form", local: true do |f|
-    .form_group
-      .form_label
-        = f.label :name
-      .form_field
-        = f.text_field :name, autofocus: true, size: "60px"
 
-    .form_group
-      .form_label
-        = f.label :password
-      .form_field
-        = f.password_field :password, size: "60px"
-    
-    .form_group
-      .form_label
-        = f.label :password_confirmation
-      .form_field
-        = f.password_field :password_confirmation, size: "60px"
+    .form
+      = f.label :name
+      = f.text_field :name
 
-    .form_group
-      = f.submit
+    .form
+      = f.label :password
+      = f.password_field :password
+
+    = f.submit "ログイン"
