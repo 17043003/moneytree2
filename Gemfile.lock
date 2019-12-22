@@ -79,6 +79,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    email_validator (2.0.1)
+      activemodel
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.3)
@@ -225,6 +227,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  email_validator
   html2slim
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
