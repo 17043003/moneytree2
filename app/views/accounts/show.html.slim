@@ -1,2 +1,6 @@
-h1 Accounts#show
-p Find me in app/views/accounts/show.html.slim
+h1 マイアカウント
+
+ul.toolbar
+  = link_to "編集", :edit_account
+
+== render "users/body"

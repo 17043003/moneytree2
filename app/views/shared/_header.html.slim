@@ -6,5 +6,5 @@ ul
 
   - if current_user
     ul.account_menu
-      = "#{current_user.name}さん"
+      = link_to "#{current_user.name}さん", :account
       = link_to "ログアウト", :session, method: :delete, data: { confirm: "ログアウトしますか？" }

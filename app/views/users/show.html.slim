@@ -3,11 +3,4 @@ h2 ユーザー詳細
 p = link_to "ユーザー一覧に戻る", users_path
 p = link_to "ユーザー情報の編集", edit_user_path
 
-.user_name
-  = "名前："
-  = @user.name
-.user_email
-  = "メールアドレス："
-  = @user.email
-
-= link_to 'ユーザ削除', @user, method: :delete, data: { confirm: "本当に削除しますか？" }
+== render "body"

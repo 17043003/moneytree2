@@ -1,5 +1,4 @@
 .form_wrapper
-  = form_with model: @user, scope: :user, local: true do |f|
     .form_group
       .form_label
         = f.label :name
@@ -24,11 +23,12 @@
       .form_field
         = f.password_field :password_confirmation, size: "60px"
 
-    .form_group
-      .form_label
-        = f.label :administrator
-      .form_field
-        = f.check_box :administrator
+    - if controller.kind_of?(UsersController)
+        .form_group
+          .form_label
+            = f.label :administrator
+          .form_field
+            = f.check_box :administrator, disabled: !current_user.administrator?
     
     .form_group
       = f.submit

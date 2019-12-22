@@ -1,6 +1,4 @@
-h1 Users#new
-p Find me in app/views/users/new.html.slim
-
 = link_to 'ユーザ一覧へ戻る', users_path
 
-== render "form"
+= form_with model: @user, scope: :user, local: true do |f|
+  == render "shared/form", f: f
