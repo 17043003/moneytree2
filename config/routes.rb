@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'budgets/index'
+  get 'budgets/show'
+  get 'budgets/new'
+  get 'budgets/edit'
   get 'passwords/edit'
   get 'accounts/show'
   get 'accounts/edit'
