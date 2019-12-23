@@ -11,6 +11,7 @@
       .form_field
         = f.text_field :email, size: "60px"
 
+    / 新規登録時のみパスワードフォームを表示
     - if controller.action_name == "new"
       .form_group
         .form_label
@@ -24,6 +25,7 @@
         .form_field
           = f.password_field :password_confirmation, size: "60px"
 
+    / アカウントページから変更できなくする
     - if controller.kind_of?(UsersController)
         .form_group
           .form_label
