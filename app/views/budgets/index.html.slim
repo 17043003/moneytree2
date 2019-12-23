@@ -1,2 +1,14 @@
 h1 Budgets#index
 p Find me in app/views/budgets/index.html.slim
+
+- @page_title = "今月の収支"
+h1 = @page_title
+
+table
+  tr
+    th 日付
+    th 合計
+  - @budgets.each do |budget|
+    tr    
+      td = "#{budget.spent_at.year}/#{budget.spent_at.month}/#{budget.spent_at.day}"
+      td = budget.amount
