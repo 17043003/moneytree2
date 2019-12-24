@@ -1,2 +1,11 @@
 h1 Budgets#edit
 p Find me in app/views/budgets/edit.html.slim
+
+= form_with model: @budget, scope: :budget do |f|
+  .budget_group
+    = f.label :spent_at
+    = f.text_field :spent_at
+
+  .budget_group
+    = f.label :amount
+    = f.text_field :amount
