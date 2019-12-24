@@ -12,3 +12,4 @@ table
     tr    
       td = "#{budget.spent_at.year}/#{budget.spent_at.month}/#{budget.spent_at.day}"
       td = budget.amount
+      td = link_to "編集", budgets_edit_path(budget)
