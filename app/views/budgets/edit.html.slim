@@ -1,8 +1,8 @@
 h1 Budgets#edit
 p Find me in app/views/budgets/edit.html.slim
 
-table
-  = form_with model: @budget, scope: :budget do |f|
+= form_with model: @budget, scope: :budget, local: true do |f|
+  table
     thead
       tr
         th = f.label :spent_at
