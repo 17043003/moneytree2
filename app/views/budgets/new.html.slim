@@ -1,2 +1,14 @@
 h1 Budgets#new
 p Find me in app/views/budgets/new.html.slim
+
+= form_with model: @budget, scope: :budget, url: budgets_path, local: true do |f|
+  table
+    thead
+      tr
+        th = f.label :spent_at
+        th = f.label :amount
+    tbody
+      tr
+        td = f.date_field :spent_at
+        td = f.text_field :amount
+        td = f.submit "create"

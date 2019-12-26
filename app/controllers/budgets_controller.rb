@@ -16,6 +16,12 @@ class BudgetsController < ApplicationController
   end
 
   def create
+    @budget = Budget.new(budget_params)
+    if @budget.save
+      redirect_to @budget, notice: "保存しました"
+    else
+      render "new"
+    end
   end
 
   def update

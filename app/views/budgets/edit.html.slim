@@ -9,6 +9,6 @@ p Find me in app/views/budgets/edit.html.slim
         th = f.label :amount
     tbody
       tr
-        td = f.text_field :spent_at
+        td = f.date_field :spent_at
         td = f.text_field :amount
         td = f.submit "update"
