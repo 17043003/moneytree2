@@ -2,7 +2,9 @@ class BudgetsController < ApplicationController
   before_action :login_required
 
   def index
-    @budgets = Budget.all
+    # @budgets = Budget.all
+    searched_date = Date.today
+    @budgets = Budget.where(spent_at: searched_date.in_time_zone.all_month).order(:spent_at)
   end
 
   def show
