@@ -3,14 +3,26 @@ class BudgetsController < ApplicationController
 
   def index
     # @budgets = Budget.all
-    searched_date = Date.today
-    @budgets = Budget.where(spent_at: searched_date.in_time_zone.all_month).order(:spent_at)
+    # searched_date = Date.today
+    # @budgets = Budget.where(spent_at: searched_date.in_time_zone.all_month).order(:spent_at)
+
+    @budgets = []
+    year = 2019
+    month = 12
+    (1..31).each do |day| 
+      if Budget.find_by(spent_at: Time.new(year, month, day))
+        @budgets.push(Budget.find_by(spent_at: Time.new(year, month, day)))
+      else
+        @budgets.push(Budget.new(spent_at: Time.new(year, month, day), amount: 0))
+      end
+    end
   end
 
   def show
   end
 
   def new
+    @budget = Budget.new(spent_at: params[:date])
   end
 
   def edit

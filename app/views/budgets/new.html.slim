@@ -9,6 +9,7 @@ p Find me in app/views/budgets/new.html.slim
         th = f.label :amount
     tbody
       tr
-        td = f.date_field :spent_at
+        / td = f.date_field :spent_at
+        td = @budget.spent_at.to_s.gsub("-", "/")
         td = f.text_field :amount
         td = f.submit "create"
