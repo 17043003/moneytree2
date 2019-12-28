@@ -29,9 +29,9 @@ class BudgetsController < ApplicationController
 
     # データベースに存在しない日付も配列に入れる
     display_day_range.each do |day| 
-      # if Budget.find_by(spent_at: Time.new(year, month, day))
-      if users_budgets.find_by(spent_at: Time.new(year, month, day))
-        @budgets.push(users_budgets.find_by(spent_at: Time.new(year, month, day)))
+      someday_budget = users_budgets.find_by(spent_at: Time.new(year, month, day))
+      if someday_budget
+        @budgets.push(someday_budget)
       else
         @budgets.push(Budget.new(spent_at: Time.new(year, month, day), amount: 0))
       end
@@ -52,7 +52,7 @@ class BudgetsController < ApplicationController
   def create
     @budget = Budget.new(budget_params)
     @budget.user = current_user
-    if @budget.save!
+    if @budget.save
       redirect_to [@budget.user, @budget], notice: "保存しました"
     else
       render "new"
