@@ -1,7 +1,7 @@
 h1 Budgets#new
 p Find me in app/views/budgets/new.html.slim
 
-= form_with model: @budget, scope: :budget, url: budgets_path, local: true do |f|
+= form_with model: @budget, scope: :budget, url: user_budgets_path, local: true do |f|
   table
     thead
       tr

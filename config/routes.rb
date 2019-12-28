@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'accounts/edit'
   root "users#top"
 
-  resources :users
-  resources :budgets
+  resources :users do
+    resources :budgets
+  end
 
   resource :session, only: [:create, :destroy]
   resource :account, only: [:show, :edit, :update]

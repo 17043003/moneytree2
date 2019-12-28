@@ -3,6 +3,8 @@ class BudgetsController < ApplicationController
 
   def index
     @budgets = []
+    users_budgets = current_user.budgets
+
     year = params["display_date(1i)"]&.to_i # 日付の範囲設定で使用するためto_iで数値にする
     month = params["display_date(2i)"]&.to_i
 
@@ -27,8 +29,9 @@ class BudgetsController < ApplicationController
 
     # データベースに存在しない日付も配列に入れる
     display_day_range.each do |day| 
-      if Budget.find_by(spent_at: Time.new(year, month, day))
-        @budgets.push(Budget.find_by(spent_at: Time.new(year, month, day)))
+      # if Budget.find_by(spent_at: Time.new(year, month, day))
+      if users_budgets.find_by(spent_at: Time.new(year, month, day))
+        @budgets.push(users_budgets.find_by(spent_at: Time.new(year, month, day)))
       else
         @budgets.push(Budget.new(spent_at: Time.new(year, month, day), amount: 0))
       end
@@ -39,17 +42,18 @@ class BudgetsController < ApplicationController
   end
 
   def new
-    @budget = Budget.new(spent_at: params[:date])
+    @budget = Budget.new(spent_at: params[:date], user_id: current_user)
   end
 
   def edit
-    @budget = Budget.find(params[:id])
+    @budget = current_user.budgets.find(params[:id])
   end
 
   def create
     @budget = Budget.new(budget_params)
-    if @budget.save
-      redirect_to @budget, notice: "保存しました"
+    @budget.user = current_user
+    if @budget.save!
+      redirect_to [@budget.user, @budget], notice: "保存しました"
     else
       render "new"
     end
@@ -59,7 +63,7 @@ class BudgetsController < ApplicationController
     @budget = Budget.find(params[:id])
     @budget.assign_attributes(budget_params)
     if @budget.save
-      redirect_to @budget, notice: "収支を登録しました"
+      redirect_to [current_user, @budget], notice: "収支を登録しました"
     else
       flash[:notice] = "更新失敗"
       render "edit"
@@ -69,7 +73,8 @@ class BudgetsController < ApplicationController
   private def budget_params
     params.require(:budget).permit(
       :spent_at,
-      :amount
+      :amount,
+      :user_id
     )
   end
 

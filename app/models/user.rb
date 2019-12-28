@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
 
+    has_many :budgets, dependent: :destroy
+
     validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
     validates :email, presence: true, email: true
 
