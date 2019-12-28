@@ -2,13 +2,7 @@
 h1.title = @page_title
 
 = form_with url: budgets_path, method: :get, local: true do |f|
-  = f.date_select(
-    :display_date,
-    { date_separator: "年",
-    use_month_numbers: true,
-    discard_day: true ,
-    default: @selected_date}
-    )
+  = f.date_select(:display_date, { date_separator: "年", use_month_numbers: true, discard_day: true, default: @selected_date})
   = f.submit "変更"
 
 table
