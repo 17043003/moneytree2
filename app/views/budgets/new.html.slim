@@ -9,8 +9,9 @@ p Find me in app/views/budgets/new.html.slim
         th = f.label :amount
     tbody
       tr
-        / td = f.date_field :spent_at
         td = @budget.spent_at.to_s.gsub("-", "/")
-        td = f.hidden_field :spent_at, value: @budget.spent_at
+
+        // 日付を登録するため隠しフォームにparams[:spent_at]を入れておく
+        td = f.hidden_field :spent_at, value: @budget.spent_at 
         td = f.text_field :amount
         td = f.submit "create"

@@ -1,8 +1,9 @@
-h1 Budgets#index
-p Find me in app/views/budgets/index.html.slim
+- @page_title = "#{@selected_date.month}月の収支"
+h1.title = @page_title
 
-- @page_title = "今月の収支"
-h1 = @page_title
+= form_with url: budgets_path, method: :get, local: true do |f|
+  = f.date_select(:display_date, { date_separator: "年", use_month_numbers: true, discard_day: true , default: @selected_date})
+  = f.submit "変更"
 
 table
   tr
