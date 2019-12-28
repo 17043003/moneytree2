@@ -5,6 +5,8 @@ class BudgetsController < ApplicationController
     @budgets = []
     users_budgets = current_user.budgets
 
+    @categories = Category.all
+
     year = params["display_date(1i)"]&.to_i # 日付の範囲設定で使用するためto_iで数値にする
     month = params["display_date(2i)"]&.to_i
 
