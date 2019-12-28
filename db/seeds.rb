@@ -13,3 +13,5 @@ Category.create(kind: "ガス代")
 Category.create(kind: "水道代")
 Category.create(kind: "通信費")
 Category.create(kind: "その他")
+
+User.create(name: "ishizuka", email: "ishizuka533725@gmail.com", password: "masaya")

@@ -32,23 +32,13 @@ ActiveRecord::Schema.define(version: 2019_12_28_074442) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.bigint "budget_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["budget_id"], name: "index_expenses_on_budget_id"
-    t.index ["user_id"], name: "index_expenses_on_user_id"
-  end
-
-  create_table "expenses_by_categories", force: :cascade do |t|
-    t.bigint "budget_id", null: false
-    t.bigint "category_id", null: false
-    t.integer "expense", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_expenses_by_categories_on_budget_id"
-    t.index ["category_id"], name: "index_expenses_by_categories_on_category_id"
+    t.index ["category_id"], name: "index_expenses_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
