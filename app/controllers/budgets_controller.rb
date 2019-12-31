@@ -14,30 +14,16 @@ class BudgetsController < ApplicationController
     if year == nil && month == nil
       year = Time.now.year
       month = Time.now.month
-      @selected_date = Time.new(year, month, 1) # indexの見出し,日付プルダウンのデフォルト値に使用する
-    else
-      @selected_date = Time.new(year, month, 1)
     end
 
-    # 表示する日付の範囲を設定
-    if [1, 3, 5, 7, 8, 10, 12].include?(month)
-      display_day_range = (1..31)
-    elsif month == 2
-      display_day_range = (1..28) if year%4 != 0
-      display_day_range = (1..29) if year%4 == 0 # うるう年
-    else
-      display_day_range = (1..30) # 4,6,9,11月
-    end
+    @selected_date = Time.new(year, month, 1) # indexの見出し,日付プルダウンのデフォルト値に使用する
 
-    # データベースに存在しない日付も配列に入れる
-    display_day_range.each do |day| 
-      someday_budget = users_budgets.find_by(spent_at: Time.new(year, month, day))
-      if someday_budget
-        @budgets.push(someday_budget)
-      else
-        @budgets.push(Budget.new(spent_at: Time.new(year, month, day), amount: 0))
-      end
-    end
+    # 月ごとの日数を取得
+    @end_of_month = get_end_of_month(year, month)
+    @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
+
+    @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
+
   end
 
   def show
@@ -78,6 +64,21 @@ class BudgetsController < ApplicationController
       :amount,
       :user_id
     )
+  end
+
+  private def get_end_of_month(year, month)
+    # 表示する日付の範囲を設定
+    if [1, 3, 5, 7, 8, 10, 12].include?(month)
+      day = 31
+    elsif [4, 6, 9, 11].include?(month)
+      day = 30 # 4,6,9,11月
+    else
+      if year%4 != 0
+        day = 28
+      elsif year%4 == 0 # うるう年
+        day = 29
+      end
+    end
   end
 
 end

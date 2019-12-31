@@ -5,19 +5,33 @@ h1.title = @page_title
   = f.date_select(:display_date, { date_separator: "年", use_month_numbers: true, discard_day: true, default: @selected_date})
   = f.submit "変更"
 
+
 table
   tr
     th 日付
     - @categories.each do |category|
       th = category.kind
     th 合計
-  - @budgets.each do |budget|
-    tr
-      td = "#{budget.spent_at.year}/#{budget.spent_at.month}/#{budget.spent_at.day}"
-      - @categories.count.times do |count|
-        td = count
-      td = budget.amount
-      - if budget.id
-        td = link_to "編集", edit_user_budget_path(current_user, budget)
-      - else
-        td = link_to "編集", controller: :budgets, action: :new, date: budget.spent_at
+    - i = 0
+    - @display_date_range.each do |date|
+      tr
+        - if @budgets[i]
+          - if @budgets[i][:spent_at] == date
+            td = date
+            td = @budgets[i][:amount]
+            td = link_to "編集", edit_user_budget_path(current_user, @budgets[i])
+            - i += 1
+          / 月始めから最初のレコードまでを0詰めして表示
+          - else
+            td = date
+            - @categories.count.times do
+              td = 0
+            td = link_to "編集", controller: :budgets, action: :new, date: date
+        / 最後のレコードから月終わりまでを0詰めで表示
+        - else
+          td = date
+          - @categories.count.times do
+            td = 0
+          td = link_to "編集", controller: :budgets, action: :new, date: date
+
+= @budgets[0].categories[0]&.kind
