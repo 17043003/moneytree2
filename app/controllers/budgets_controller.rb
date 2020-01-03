@@ -7,6 +7,7 @@ class BudgetsController < ApplicationController
 
     @categories = Category.all
 
+
     year = params["display_date(1i)"]&.to_i # 日付の範囲設定で使用するためto_iで数値にする
     month = params["display_date(2i)"]&.to_i
 
@@ -23,6 +24,9 @@ class BudgetsController < ApplicationController
     @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
 
     @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
+    # @display_date_range.each do |date|
+    #   @budgets << users_budgets.where(spent_at: date) if users_budgets.find_by(spent_at: date)
+    # end
 
   end
 

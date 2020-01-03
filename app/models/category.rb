@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-    has_many :expenses, dependent: :destroy
-    has_many :budgets, through: :expenses
+    # has_many :budgets
+    belongs_to :budget
 
     validates :kind, presence: true
 end

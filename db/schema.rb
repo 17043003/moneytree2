@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_074442) do
+ActiveRecord::Schema.define(version: 2019_12_31_190252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_12_28_074442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_budgets_on_category_id"
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
@@ -29,16 +31,6 @@ ActiveRecord::Schema.define(version: 2019_12_28_074442) do
     t.string "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "expenses", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "budget_id", null: false
-    t.integer "amount", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_expenses_on_budget_id"
-    t.index ["category_id"], name: "index_expenses_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,5 +42,6 @@ ActiveRecord::Schema.define(version: 2019_12_28_074442) do
     t.string "password_digest"
   end
 
+  add_foreign_key "budgets", "categories"
   add_foreign_key "budgets", "users"
 end
