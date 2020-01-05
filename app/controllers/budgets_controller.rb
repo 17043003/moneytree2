@@ -34,7 +34,12 @@ class BudgetsController < ApplicationController
   end
 
   def new
-    @budget = Budget.new(spent_at: params[:date], user_id: current_user)
+    @categories = Category.all
+    @budgets = []
+    
+    @categories.count.times do
+      @budgets << Budget.new(spent_at: params[:date], user_id: current_user)
+    end
   end
 
   def edit
