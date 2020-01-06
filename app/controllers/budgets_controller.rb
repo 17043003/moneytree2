@@ -24,10 +24,7 @@ class BudgetsController < ApplicationController
     @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
 
     @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
-    # @display_date_range.each do |date|
-    #   @budgets << users_budgets.where(spent_at: date) if users_budgets.find_by(spent_at: date)
-    # end
-
+    p @budgets
   end
 
   def show
@@ -47,13 +44,21 @@ class BudgetsController < ApplicationController
   end
 
   def create
-    @budget = Budget.new(budget_params)
-    @budget.user = current_user
-    if @budget.save
-      redirect_to [@budget.user, @budget], notice: "保存しました"
-    else
-      render "new"
+    @budgets = []
+
+    budget_params.each do |param|
+      # @budgets << Budget.new(param)
+      if param[:amount]
+        Budget.new(param).save
+      end
     end
+    # @budgets[0].save
+    # @budget.user = current_user
+    # if @budget.save
+    #   redirect_to [@budget.user, @budget], notice: "保存しました"
+    # else
+    #   render "new"
+    # end
   end
 
   def update
@@ -68,11 +73,13 @@ class BudgetsController < ApplicationController
   end
 
   private def budget_params
-    params.require(:budget).permit(
-      :spent_at,
-      :amount,
-      :user_id
-    )
+    params.require(:budgets).map do |param|
+      param.permit(:spent_at, :amount, :user_id, :category_id)
+    end
+      # params.permit(:user_id, budgets: [:spent_at, :amount, :category_id])[:budgets]
+    # params.require(:budgets).map do |param|
+    #   ActionController::Parameters.new(param.permit!.to_hash).permit(:spent_at, :amount, :category_id)
+    # end
   end
 
   private def get_end_of_month(year, month)

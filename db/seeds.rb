@@ -14,4 +14,6 @@ Category.create(kind: "水道代")
 Category.create(kind: "通信費")
 Category.create(kind: "その他")
 
-User.create(name: "ishizuka", email: "ishizuka533725@gmail.com", password: "masaya")
+User.create(name: "ishizuka", email: "ishi@gmail.com", password: "masaya")
+
+Budget.create(spent_at: "2020-1-5", amount: 1000, user_id: User.find_by(name: "ishizuka").id, category_id: Category.find_by(kind: "食費"))

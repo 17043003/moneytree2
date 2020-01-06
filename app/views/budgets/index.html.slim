@@ -17,25 +17,25 @@ table
       tr
         - if @budgets[i]
           - if @budgets[i][:spent_at] == date
-            td = date
+            td = date.to_s.gsub("-", "/")
             - @categories.count.times do |count|
-              - if @budgets[i] && @budgets[i][:category_id] == count+1
+              - if @budgets[i] && @budgets[i][:spent_at] == date && @budgets[i][:category_id] == count+1
                 td = @budgets[i][:amount]
                 - i += 1
               - else
                 td = 0
             / td = link_to "編集", edit_user_budget_path(current_user, @budgets[i])
             td = link_to "編集"
-            - i += 1
+            
           / 月始めから最初のレコードまでを0詰めして表示
           - else
-            td = date
+            td = date.to_s.gsub("-", "/")
             - @categories.count.times do
               td = 0
             td = link_to "編集", controller: :budgets, action: :new, date: date
         / 最後のレコードから月終わりまでを0詰めで表示
         - else
-          td = date
+          td = date.to_s.gsub("-", "/")
           - @categories.count.times do
             td = 0
           td = link_to "編集", controller: :budgets, action: :new, date: date

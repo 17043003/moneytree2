@@ -1,22 +1,20 @@
-h1 Budgets#new
-p Find me in app/views/budgets/new.html.slim
-
-= form_with model: @budget, scope: :budget, url: user_budgets_path, local: true do |f|
+= form_with url: [current_user, :budgets], scope: :budget, local: true do
   table
     thead
       tr
-        th = f.label :spent_at
         - @categories.each do |category|
           th = category.kind
-        
+
     tbody
       tr
-        td = @budgets[0].spent_at.to_s.gsub("-", "/")
-        - @categories.each do |category|
-          = fields_for "budgets[]", @budgets
-            td = f.text_field :amount
-            td = f.hidden_field :category, value: category.kind
-        // 日付を登録するため隠しフォームにparams[:spent_at]を入れておく
-        td = f.hidden_field :spent_at, value: @budgets[0].spent_at
+        - i = 0
+        - @budgets.each do |budget|
+          = fields_for "budgets[]", budget do |budget_f|
+            td = budget_f.text_field :amount
+            // 日付を登録するため隠しフォームにparams[:spent_at]を入れておく
+            = budget_f.hidden_field :spent_at, value: @budgets[0].spent_at
+            = budget_f.hidden_field :category_id, value: @categories[i].id
+            = budget_f.hidden_field :user_id, value: current_user.id
+            - i += 1
         
-        td = f.submit "create"
+      = submit_tag
