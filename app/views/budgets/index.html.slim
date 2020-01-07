@@ -18,8 +18,8 @@ table
         - if @budgets[i]
           - if @budgets[i][:spent_at] == date
             td = date.to_s.gsub("-", "/")
-            - @categories.count.times do |count|
-              - if @budgets[i] && @budgets[i][:spent_at] == date && @budgets[i][:category_id] == count+1
+            - @categories.each do |category|
+              - if @budgets[i] && @budgets[i][:spent_at] == date && @budgets[i][:category_id] == category.id
                 td = @budgets[i][:amount]
                 - i += 1
               - else

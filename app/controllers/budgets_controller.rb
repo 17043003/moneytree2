@@ -6,7 +6,7 @@ class BudgetsController < ApplicationController
     users_budgets = current_user.budgets
 
     @categories = Category.all
-
+    p @categories
 
     year = params["display_date(1i)"]&.to_i # 日付の範囲設定で使用するためto_iで数値にする
     month = params["display_date(2i)"]&.to_i
@@ -24,7 +24,6 @@ class BudgetsController < ApplicationController
     @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
 
     @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
-    p @budgets
   end
 
   def show
@@ -45,27 +44,28 @@ class BudgetsController < ApplicationController
 
   def create
     @budgets = []
+    save_flag = false
 
     budget_params.each do |param|
-      # @budgets << Budget.new(param)
       if param[:amount]
-        Budget.new(param).save
+        if Budget.new(param).save
+          save_flag = true
+        end
       end
     end
-    # @budgets[0].save
-    # @budget.user = current_user
-    # if @budget.save
-    #   redirect_to [@budget.user, @budget], notice: "保存しました"
-    # else
-    #   render "new"
-    # end
+    if save_flag
+      redirect_to [current_user, :budgets], notice: "収支を保存しました"
+    else
+      redirect_to [:new, current_user, :budget]
+      # render "budgets/new"
+    end
   end
 
   def update
     @budget = Budget.find(params[:id])
     @budget.assign_attributes(budget_params)
     if @budget.save
-      redirect_to [current_user, @budget], notice: "収支を登録しました"
+      redirect_to [current_user, @budget], notice: "収支を更新しました"
     else
       flash[:notice] = "更新失敗"
       render "edit"
@@ -76,10 +76,6 @@ class BudgetsController < ApplicationController
     params.require(:budgets).map do |param|
       param.permit(:spent_at, :amount, :user_id, :category_id)
     end
-      # params.permit(:user_id, budgets: [:spent_at, :amount, :category_id])[:budgets]
-    # params.require(:budgets).map do |param|
-    #   ActionController::Parameters.new(param.permit!.to_hash).permit(:spent_at, :amount, :category_id)
-    # end
   end
 
   private def get_end_of_month(year, month)
