@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'users#top'
 
   resources :users do
-    resources :budgets
+    resources :budgets, except: [:edit, :update]
   end
 
   resource :session, only: [:create, :destroy]
