@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
 
     private def login_required
         # raise LoginRequired unless current_user
-        redirect_to "/signup" unless current_user
+        redirect_to "/users/new" unless current_user
     end
 end
