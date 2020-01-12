@@ -15,17 +15,17 @@ html
       .header
         == render "shared/header"
 
-      .wrapper.clearfix
-        .main
-          = flash[:notice]
-          = yield
+    .wrapper.clearfix
+      .main
+        = flash[:notice]
+        = yield
 
-        .sidebar
-          == render "shared/sidebar"
-    - else
-      .not_login_display
-        h1 ログイン画面
-        == render "shared/login_form"
+      .sidebar
+        == render "shared/sidebar"
+    / - else
+    /   .not_login_display
+    /     h1 ログイン画面
+    /     == render "shared/login_form"
 
     .footer
       == render "shared/footer"

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :login_required, except: [:top]
+  before_action :login_required
 
   def top
   end

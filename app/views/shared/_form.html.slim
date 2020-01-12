@@ -26,7 +26,7 @@
           = f.password_field :password_confirmation, size: "60px"
 
     / アカウントページから変更できなくする
-    - if controller.kind_of?(UsersController)
+    - if controller.kind_of?(UsersController) && current_user&.administrator?
         .form_group
           .form_label
             = f.label :administrator

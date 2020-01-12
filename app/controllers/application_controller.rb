@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     class Forbidden < StandardError; end
 
     private def login_required
-        raise LoginRequired unless current_user
+        # raise LoginRequired unless current_user
+        redirect_to "/signup" unless current_user
     end
 end
