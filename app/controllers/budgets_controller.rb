@@ -24,6 +24,13 @@ class BudgetsController < ApplicationController
     @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
 
     @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
+    
+    # 日ごとの合計金額を取得
+    @sum_amounts = {}
+    @display_date_range.each do |date|
+      @sum_amounts.store(date, users_budgets.where(spent_at: date).sum(:amount))
+    end 
+    p @sum_amounts
   end
 
   def show

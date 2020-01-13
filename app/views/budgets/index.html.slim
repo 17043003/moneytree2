@@ -24,7 +24,7 @@ table
               - else
                 td = 0
             
-            / td = link_to "編集", controller: :budgets, action: :edit, date: date
+            td = @sum_amounts[date]
             td = link_to "編集", controller: :budgets, action: :new, date: date
             
           / 月始めから最初のレコードまでを0詰めして表示
@@ -32,10 +32,14 @@ table
             td = date.to_s.gsub("-", "/")
             - @categories.count.times do
               td = 0
+
+            td = @sum_amounts[date]
             td = link_to "編集", controller: :budgets, action: :new, date: date
         / 最後のレコードから月終わりまでを0詰めで表示
         - else
           td = date.to_s.gsub("-", "/")
           - @categories.count.times do
             td = 0
+            
+          td = @sum_amounts[date]
           td = link_to "編集", controller: :budgets, action: :new, date: date
