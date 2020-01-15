@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand Moneytree
+      .logo.navbar-brand = link_to "Moneytree", :root
     
     - if current_user
       .header
