@@ -1,0 +1,37 @@
+// Place all the styles related to the budgets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+    width: 100%;
+
+    td {
+        border: 1px solid rgb(238, 234, 181);
+    }
+
+    .table-title th {
+        background-color: rgb(241, 147, 110);
+        text-align: center;
+    }
+
+    .date {
+        background-color: rgb(147, 236, 207);
+        text-align: center;
+    }
+
+    td.item {
+        background-color: cornsilk;
+        text-align: right;
+    }
+
+    td.sum {
+        background-color: bisque;
+        text-align: right;
+    }
+
+    td.edit {
+        padding: 10px 20px 5px 20px;
+        text-align: center;
+    }
+
+}

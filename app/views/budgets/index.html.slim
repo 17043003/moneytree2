@@ -6,40 +6,40 @@ h1.title = @page_title
   = f.submit "変更"
 
 table
-  tr
+  tr.table-title
     th 日付
     - @categories.each do |category|
       th = category.kind
     th 合計
     - i = 0
     - @display_date_range.each do |date|
-      tr
+      tr.table-item
         - if @budgets[i]
           - if @budgets[i][:spent_at] == date
-            td = date.to_s.gsub("-", "/")
+            td.date = date.to_s.gsub("-", "/")
             - @categories.each do |category|
               - if @budgets[i] && @budgets[i][:spent_at] == date && @budgets[i][:category_id] == category.id
-                td = @budgets[i][:amount]
+                td.item = @budgets[i][:amount]
                 - i += 1
               - else
-                td = 0
+                td.item = 0
             
-            td = @sum_amounts[date]
-            td = link_to "編集", controller: :budgets, action: :new, date: date
+            td.sum = @sum_amounts[date]
+            td.edit = link_to "編集", controller: :budgets, action: :new, date: date
             
           / 月始めから最初のレコードまでを0詰めして表示
           - else
-            td = date.to_s.gsub("-", "/")
+            td.date = date.to_s.gsub("-", "/")
             - @categories.count.times do
-              td = 0
+              td.item = 0
 
-            td = @sum_amounts[date]
-            td = link_to "編集", controller: :budgets, action: :new, date: date
+            td.sum = @sum_amounts[date]
+            td.edit = link_to "編集", controller: :budgets, action: :new, date: date
         / 最後のレコードから月終わりまでを0詰めで表示
         - else
-          td = date.to_s.gsub("-", "/")
+          td.date = date.to_s.gsub("-", "/")
           - @categories.count.times do
-            td = 0
+            td.item = 0
             
-          td = @sum_amounts[date]
-          td = link_to "編集", controller: :budgets, action: :new, date: date
+          td.sum = @sum_amounts[date]
+          td.edit = link_to "編集", controller: :budgets, action: :new, date: date
