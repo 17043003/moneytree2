@@ -4,6 +4,7 @@
 
 table {
     width: 100%;
+    margin-top: 20px;
 
     td {
         border: 1px solid rgb(238, 234, 181);
@@ -34,4 +35,16 @@ table {
         text-align: center;
     }
 
+    th.kind {
+        border: 1px dotted rgb(233, 61, 18);
+        background-color: cornsilk;
+    }
+
+    td.amount {
+        border: 1px solid rgb(147, 227, 241);
+
+        input {
+            width: 80px;
+        }
+    }
 }

@@ -2,14 +2,14 @@ doctype html
 html
   head
     title
-      | Moneytree
+      | へそくりすと
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .logo.navbar-brand = link_to "Moneytree", :root
+      .logo.navbar-brand = link_to "へそくりすと", :root
     
     - if current_user
       .header
