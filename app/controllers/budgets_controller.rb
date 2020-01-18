@@ -24,13 +24,28 @@ class BudgetsController < ApplicationController
     @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
 
     @budgets = users_budgets.where(spent_at: @display_date_range).order(:spent_at)
+
+    @everyday_budgets = {}
+    budgets = []
+
+    # 収支を日付のインデックスをキー、要素をカテゴリごとの金額の配列とするハッシュを作成
+    @display_date_range.each_with_index do |date, index|
+      budgets = @categories.map do |category|
+        if users_budgets.find_by(spent_at: date, category_id: category.id, user_id: current_user.id)
+          users_budgets.find_by(spent_at: date, category_id: category.id, user_id: current_user.id).amount
+        else
+          0
+        end
+      end
+      @everyday_budgets.store(index, budgets)
+    end
     
     # 日ごとの合計金額を取得
     @sum_amounts = {}
     @display_date_range.each do |date|
       @sum_amounts.store(date, users_budgets.where(spent_at: date).sum(:amount))
     end 
-    p @sum_amounts
+
   end
 
   def show
