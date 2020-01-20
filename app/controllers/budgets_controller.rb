@@ -48,6 +48,32 @@ class BudgetsController < ApplicationController
 
   end
 
+  def graph
+    users_budgets = current_user.budgets
+
+    year = params["display_date(1i)"]&.to_i # 日付の範囲設定で使用するためto_iで数値にする
+    month = params["display_date(2i)"]&.to_i
+
+    # 最初に現在の年,月を表示する
+    if year == nil && month == nil
+      year = Time.now.year
+      month = Time.now.month
+    end
+
+    @selected_date = Time.new(year, month, 1) # indexの見出し,日付プルダウンのデフォルト値に使用する
+
+    # 月ごとの日数を取得
+    @end_of_month = get_end_of_month(year, month)
+    @display_date_range = (Date.new(year, month, 1)..Date.new(year, month, @end_of_month))
+
+    # 日ごとの合計金額を取得
+    sum_amounts = {}
+    @display_date_range.each do |date|
+      sum_amounts.store(date, users_budgets.where(spent_at: date).sum(:amount))
+    end
+    @daily_total = sum_amounts.to_a
+  end
+
   def show
   end
 

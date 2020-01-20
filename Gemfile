@@ -40,6 +40,8 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 
+gem 'chartkick'
+
 gem 'rails-i18n', '~> 5.1'
 gem 'email_validator'
 

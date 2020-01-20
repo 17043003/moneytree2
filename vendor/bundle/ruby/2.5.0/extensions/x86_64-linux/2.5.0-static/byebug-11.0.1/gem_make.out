@@ -1,0 +1,19 @@
+current directory: /mnt/d/rails/moneytree2/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+/home/ishizuka/.rbenv/versions/2.5.1/bin/ruby -I /home/ishizuka/.rbenv/versions/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200119-10587-3khjwu.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/d/rails/moneytree2/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /mnt/d/rails/moneytree2/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /mnt/d/rails/moneytree2/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20200119-10587-1vs0zbs/byebug

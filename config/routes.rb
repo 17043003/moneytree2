@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   get 'passwords/edit'
   get 'accounts/show'
   get 'accounts/edit'
-  
+
   root 'users#top'
   
 
   resources :users do
-    resources :budgets, except: [:edit, :update]
+    resources :budgets, except: [:edit, :update] do
+      collection do
+        get :graph
+      end
+    end
   end
 
   resource :session, only: [:create, :destroy]
