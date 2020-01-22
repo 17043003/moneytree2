@@ -1,0 +1,4 @@
+p = link_to "ユーザー詳細に戻る", @user
+
+= form_with model: @user, scope: :user, local: true do |f|
+  == render "shared/form", f: f

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   get 'user/top'
+  # end
   get 'passwords/edit'
   get 'accounts/show'
   get 'accounts/edit'
@@ -13,6 +16,10 @@ Rails.application.routes.draw do
         get :graph
       end
     end
+  end
+
+  namespace :admin do
+    root 'users#top'
   end
 
   resource :session, only: [:create, :destroy]

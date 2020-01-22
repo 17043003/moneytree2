@@ -1,0 +1,8 @@
+.user_name
+  = "名前："
+  = @user.name
+.user_email
+  = "メールアドレス："
+  = @user.email
+
+= link_to 'ユーザ削除', @user, method: :delete, data: { confirm: "本当に削除しますか？" }
