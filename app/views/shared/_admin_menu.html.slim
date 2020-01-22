@@ -1,5 +1,5 @@
 ul.global-nav
   li.nav-item.active = link_to "トップ", :root
-  li.nav-item = link_to "ユーザー一覧", :users
+  li.nav-item = link_to "ユーザー一覧", admin_users_path
   li.nav-item = link_to "収支", user_budgets_path(current_user)
   li.nav-item = link_to "グラフ", "/users/:id/budgets/graph"

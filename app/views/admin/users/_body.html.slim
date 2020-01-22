@@ -5,4 +5,4 @@
   = "メールアドレス："
   = @user.email
 
-= link_to 'ユーザ削除', @user, method: :delete, data: { confirm: "本当に削除しますか？" }
+= link_to 'ユーザ削除', [:admin, @user], method: :delete, data: { confirm: "本当に削除しますか？" }

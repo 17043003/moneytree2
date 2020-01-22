@@ -4,4 +4,7 @@ ul.toolbar
   = link_to "編集", :edit_account
   = link_to "パスワードの変更", :edit_password
 
-== render "users/body"
+- if current_user.administrator
+  == render "admin/users/body"
+- else
+  == render "users/body"

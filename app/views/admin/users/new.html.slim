@@ -1,7 +1,7 @@
 - if current_user
-  = link_to 'ユーザ一覧へ戻る', users_path
+  = link_to 'ユーザ一覧へ戻る', admin_users_path
 - else
   h1 ユーザの新規登録
 
-= form_with model: @user, scope: :user, local: true do |f|
+= form_with model: [:admin, @user], scope: :user, local: true do |f|
   == render "shared/form", f: f
