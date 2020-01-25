@@ -54,13 +54,15 @@ a:active {
             letter-spacing: 1px;
             transition: 0.2s;
         }
+
+        a.active,
+        .nav-item a:hover {
+            background-color: #9dda58;
+            color: #fff;
+        }
     }
 
-    .nav-item.active a,
-    .nav-item a:hover {
-        background-color: #9dda58;
-        color: #fff;
-    }
+
 }
 
 .account_menu {
