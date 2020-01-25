@@ -6,38 +6,72 @@ table {
     width: 100%;
     margin-top: 20px;
 
+    th {
+        padding: 8px 15px;
+        border-right: 1px solid rgb(49, 88, 29);
+        background: -moz-linear-gradient(rgba(146, 221, 128, 0.7), rgba(164, 247, 143, 0.9) 50%);
+        background: -webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(146, 221, 128, 0.7)), to(rgba(164, 247, 143, 0.9)));
+        text-shadow: 0 -1px 0 rgba(146, 221, 128, 0.9);
+        box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    }
+
+    th:first-child {
+        border-radius: 5px 0 0 0;
+    }
+
+    th:last-child {
+        border: none;
+        border-radius: 0 5px 0 0;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    }
+
+    tr {
+        td:last-child {
+            border-right: 1px solid rgb(156, 245, 112);
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        td:first-child {
+            border-bottom: rgb(156, 245, 112);
+        }
+    }
+
+    tr:nth-child(odd) {
+        background: rgb(224, 240, 216);
+    }
+
+    tr:nth-child(even) {
+        background: rgb(255, 255, 255);
+    }
+
+    tr td:first-child {
+        font-weight: bold;
+    }
+
+    tr:last-child {
+        td {
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+        }
+    }
+
     td {
-        border: 1px solid rgb(238, 234, 181);
+        border: 1px solid rgb(121, 190, 87);
+        text-align: right;
     }
 
     .table-title th {
-        background-color: rgb(241, 147, 110);
+        background-color: rgb(40, 187, 40);
         text-align: center;
     }
 
     .date {
-        background-color: rgb(147, 236, 207);
         text-align: center;
-    }
-
-    td.item {
-        background-color: cornsilk;
-        text-align: right;
-    }
-
-    td.sum {
-        background-color: bisque;
-        text-align: right;
     }
 
     td.edit {
         padding: 10px 20px 5px 20px;
         text-align: center;
-    }
-
-    th.kind {
-        border: 1px dotted rgb(233, 61, 18);
-        background-color: cornsilk;
+        border: none;
     }
 
     td.amount {
