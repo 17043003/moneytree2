@@ -1,3 +1,5 @@
+h1 = "#{@selected_date.year}年 #{@selected_date.month}月の収支合計グラフ"
+
 = form_with url: "/users/#{current_user.id}/budgets/graph", method: :get, local: true do |f|
   = f.date_select(:display_date, { date_separator: "年", use_month_numbers: true, discard_day: true, default: @selected_date})
   = f.submit "変更"

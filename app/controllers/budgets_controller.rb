@@ -69,7 +69,7 @@ class BudgetsController < ApplicationController
     # 日ごとの合計金額を取得
     sum_amounts = {}
     @display_date_range.each do |date|
-      sum_amounts.store(date, users_budgets.where(spent_at: date).sum(:amount))
+      sum_amounts.store(date.day, users_budgets.where(spent_at: date).sum(:amount))
     end
     @daily_total = sum_amounts.to_a
   end
