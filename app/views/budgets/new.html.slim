@@ -15,4 +15,4 @@ h1 = "#{params[:date].sub('-', '年').sub('-', '月')}日"
             = budget_f.hidden_field :category_id, value: @categories[i].id
             - i += 1
 
-      = submit_tag
+      = submit_tag "更新"

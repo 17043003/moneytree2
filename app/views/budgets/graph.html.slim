@@ -4,4 +4,5 @@ h1 = "#{@selected_date.year}年 #{@selected_date.month}月の収支合計グラ�
   = f.date_select(:display_date, { date_separator: "年", use_month_numbers: true, discard_day: true, default: @selected_date})
   = f.submit "変更"
 
-= column_chart @daily_total
+/ = column_chart @daily_total
+= area_chart @daily_total, xtitle: "日付", ytitle: "支出", xmin: 1, xmax: @end_of_month
