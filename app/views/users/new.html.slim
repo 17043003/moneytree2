@@ -4,4 +4,5 @@
   h1 ユーザの新規登録
 
 = form_with model: @user, scope: :user, local: true do |f|
+  == render 'shared/error_message', model: f.object
   == render "shared/form", f: f
