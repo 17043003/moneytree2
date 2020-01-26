@@ -1,22 +1,31 @@
-h1 = params[:date]
+h1 = "#{params[:date].sub('-', '年').sub('-', '月')}日"
 
 = form_with url: [current_user, :budgets], scope: :budget, local: true do
 
   table
     thead
-      tr
-        - @categories.each do |category|
+      - i = 0
+      - @categories.each do |category|
+        tr
           th.kind = category.kind
-
-    tbody
-      tr
-        - i = 0
-        - @budgets.each do |budget|
-          = fields_for "budgets[]", budget, index: i do |budget_f|
+          = fields_for "budgets[]", @budgets[i], index: i do |budget_f|
             td.amount = budget_f.text_field :amount
             // 日付を登録するため隠しフォームにparams[:spent_at]を入れておく
             = budget_f.hidden_field :spent_at, value: params[:date]
             = budget_f.hidden_field :category_id, value: @categories[i].id
             - i += 1
+
+      = submit_tag
+
+    / tbody
+    /   tr
+    /     - i = 0
+    /     - @budgets.each do |budget|
+    /       = fields_for "budgets[]", budget, index: i do |budget_f|
+    /         td.amount = budget_f.text_field :amount
+    /         // 日付を登録するため隠しフォームにparams[:spent_at]を入れておく
+    /         = budget_f.hidden_field :spent_at, value: params[:date]
+    /         = budget_f.hidden_field :category_id, value: @categories[i].id
+    /         - i += 1
         
       = submit_tag
