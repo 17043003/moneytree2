@@ -11,4 +11,27 @@ class UserMailer < ApplicationMailer
         format.text
       end
   end
+
+  def notice_email
+    # @user = []
+    # @user << User.find_by(name: "masaya")
+    # @user << User.find_by(name: "ishizuka")
+
+    # @user.each do |user|
+    # mail(
+    #   to: user.email,
+    #   subject: "今月の収支 お知らせ"
+    # ) do |format|
+    #     format.text
+    #   end
+    # end
+
+    @user = User.find_by(name: "masaya")
+    mail(
+      to: @user.email,
+      subject: "今月の収支 お知らせ"
+    ) do |format|
+        format.text
+      end
+  end
 end
