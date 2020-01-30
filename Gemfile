@@ -43,6 +43,8 @@ gem 'bootstrap'
 gem 'chartkick'
 gem 'active_link_to'
 
+gem 'sidekiq'
+
 gem 'rails-i18n', '~> 5.1'
 gem 'email_validator'
 
