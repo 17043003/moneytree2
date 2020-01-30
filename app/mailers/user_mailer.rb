@@ -1,8 +1,14 @@
 class UserMailer < ApplicationMailer
-  default from: "from@example.com"
+  default from: "from@gmail.com"
 
   def signup_email
     @user = params[:user]
-    mail(to: @user.email, subject: "登録完了!")
+    @url = :root_path
+    mail(
+      to: @user.email,
+      subject: "登録完了!"
+    ) do |format|
+        format.text
+      end
   end
 end

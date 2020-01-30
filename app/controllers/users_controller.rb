@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+
+      # 登録出来たらメールを送信
+      UserMailer.with(user: @user).signup_email.deliver_later
       redirect_to @user, notice: "ユーザー登録しました" if current_user
       # 新規登録後にログインしてトップページへリダイレクト
       session[:user_id] = @user.id
