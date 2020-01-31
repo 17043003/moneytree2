@@ -48,6 +48,40 @@ class BudgetsController < ApplicationController
 
   end
 
+  def top
+    users_budgets = current_user.budgets
+
+    @total_each_month = []
+
+    @year = Time.now.year
+    @month = Time.now.month
+
+    @date = Time.now.strftime("%B, %Y")
+
+    sum_amount_with_month = {}
+
+    # 直近半年間の収支を計算し、グラフに表示する
+    6.times do
+
+      if @month == 0
+        @year -= 1
+        @month = 12
+      end
+
+      @end_of_month = get_end_of_month(@year, @month)
+      date_range = (Date.new(@year, @month, 1)..Date.new(@year, @month, @end_of_month))
+
+      sum = 0
+
+      date_range.each do |date|
+        sum += users_budgets.where(spent_at: date).sum(:amount)
+      end
+      sum_amount_with_month.store((@year.to_s + "年" + @month.to_s + "月"), sum)
+      @month -= 1
+    end
+    @total_each_month = sum_amount_with_month.to_a.reverse
+  end
+
   def graph
     users_budgets = current_user.budgets
 
