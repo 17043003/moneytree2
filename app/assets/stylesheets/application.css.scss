@@ -80,20 +80,22 @@ a:active {
     width: 660px;
 }
 
-.not_login_display {
-    width: 100%;
-    background-color: skyblue;
-
-    .login_form {
-        text-align: center;
-    }
-}
-
 .sidebar {
     float: right;
     width: 275px;
     background-color: skyblue;
     font-size: 90%;
+    border-radius: 10px;
+    padding: 4px;
+
+    .login_title {
+        border-bottom: double;
+    }
+
+    .form label {
+        width: 65px;
+        text-align: left;
+    }
 }
 
 .wrapper {
