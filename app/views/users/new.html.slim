@@ -1,8 +1,9 @@
 - if current_user
   = link_to 'ユーザ一覧へ戻る', users_path
 - else
-  h1 ユーザの新規登録
+  / h1.signup-title 
+  - title = "ユーザの新規登録"
 
 = form_with model: @user, scope: :user, local: true do |f|
   == render 'shared/error_message', model: f.object
-  == render "shared/form", f: f
+  == render "shared/form", f: f, title: title
